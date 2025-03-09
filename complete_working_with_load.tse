@@ -1,0 +1,1141 @@
+version = 4.2
+
+//
+// Saved by sw version: 2023.2
+//
+
+model "complete_working_with_load" {
+    configuration {
+        hil_device = "VHIL+"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = 1e-6
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        cpl_stb = True
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        export_out_file = ""
+        export_lock_top_level = True
+        export_encrypt_library = True
+        export_encrypt_resources = True
+    }
+
+    component Subsystem Root {
+        component "core/Ground" gnd1 {
+        }
+        [
+            position = 7472, 8336
+            hide_name = True
+        ]
+
+        component "core/Three Phase Voltage Source" G1 {
+            init_frequency = "60"
+            init_rms_value = "20000"
+        }
+        [
+            position = 7608, 8080
+            size = 62, 256
+        ]
+
+        component "core/Current Measurement" Ia1 {
+        }
+        [
+            position = 7704, 7984
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Ib1 {
+        }
+        [
+            position = 7704, 8080
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Ic1 {
+        }
+        [
+            position = 7704, 8176
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vab1 {
+        }
+        [
+            position = 7808, 8032
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vbc1 {
+        }
+        [
+            position = 7808, 8136
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vca1 {
+        }
+        [
+            position = 7872, 8224
+            rotation = right
+            scale = 1, -1
+            size = 64, 32
+        ]
+
+        component "core/Three Phase Two Winding Transformer" Tr1 {
+            Sn = "900e6"
+            V1 = "20000"
+            V2 = "230000"
+            core_model = "Lm/Rm neglected"
+            input = "pu"
+            l1 = "0.48e-3"
+            l2 = "0.48e-3"
+            lm = "156.68213162985495"
+            r1 = "1e-15"
+            r2 = "1e-15"
+            rm = "347.82608695652175"
+            winding_1_connection = "D"
+            winding_2_connection = "D"
+        }
+        [
+            position = 8080, 8080
+            size = 126, 256
+        ]
+
+        component "core/Three Phase Two Winding Transformer" Tr2 {
+            Sn = "900e6"
+            V1 = "20000"
+            V2 = "230000"
+            core_model = "Lm/Rm neglected"
+            input = "pu"
+            l1 = "0.48e-3"
+            l2 = "0.48e-3"
+            lm = "156.68213162985495"
+            r1 = "1e-15"
+            r2 = "1e-15"
+            rm = "347.82608695652175"
+            winding_1_connection = "D"
+            winding_2_connection = "D"
+        }
+        [
+            position = 8824, 8848
+            rotation = left
+            size = 126, 256
+        ]
+
+        component "core/Three Phase Voltage Source" G2 {
+            init_frequency = "60"
+            init_rms_value = "20000"
+        }
+        [
+            position = 8824, 9168
+            rotation = left
+            size = 62, 256
+        ]
+
+        component "core/Ground" gnd4 {
+        }
+        [
+            position = 8824, 9272
+        ]
+
+        component "core/Ground" gnd9 {
+        }
+        [
+            position = 7472, 6752
+            hide_name = True
+        ]
+
+        component "core/Three Phase Voltage Source" G3 {
+            init_frequency = "60"
+            init_rms_value = "20000"
+        }
+        [
+            position = 7608, 6496
+            size = 62, 256
+        ]
+
+        component "core/Current Measurement" Ia3 {
+        }
+        [
+            position = 7704, 6400
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Ib3 {
+        }
+        [
+            position = 7704, 6496
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Ic3 {
+        }
+        [
+            position = 7704, 6592
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vab3 {
+        }
+        [
+            position = 7808, 6448
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vbc3 {
+        }
+        [
+            position = 7808, 6552
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vca3 {
+        }
+        [
+            position = 7872, 6640
+            rotation = right
+            scale = 1, -1
+            size = 64, 32
+        ]
+
+        component "core/Three Phase Two Winding Transformer" Tr3 {
+            Sn = "900e6"
+            V1 = "20000"
+            V2 = "230000"
+            core_model = "Lm/Rm neglected"
+            input = "pu"
+            l1 = "0.48e-3"
+            l2 = "0.48e-3"
+            lm = "156.68213162985495"
+            r1 = "1e-15"
+            r2 = "1e-15"
+            rm = "347.82608695652175"
+            winding_1_connection = "D"
+            winding_2_connection = "D"
+        }
+        [
+            position = 8016, 6496
+            size = 126, 256
+        ]
+
+        component "core/Three Phase Voltage Source" G4 {
+            init_frequency = "60"
+            init_rms_value = "20000"
+        }
+        [
+            position = 8824, 7552
+            rotation = left
+            size = 62, 256
+        ]
+
+        component "core/Ground" gnd12 {
+        }
+        [
+            position = 8824, 7688
+        ]
+
+        component "core/Ground" gnd17 {
+        }
+        [
+            position = 9328, 6624
+        ]
+
+        component "core/Ground" gnd18 {
+        }
+        [
+            position = 8464, 6632
+        ]
+
+        component "core/Ground" gnd19 {
+        }
+        [
+            position = 8424, 8256
+        ]
+
+        component "core/Ground" gnd20 {
+        }
+        [
+            position = 9296, 8256
+        ]
+
+        component "core/Three Phase Two Winding Transformer" Tr5 {
+            Sn = "900e6"
+            V1 = "20000"
+            V2 = "230000"
+            core_model = "Lm/Rm neglected"
+            input = "pu"
+            l1 = "0.48e-3"
+            l2 = "0.48e-3"
+            lm = "156.68213162985495"
+            r1 = "1e-15"
+            r2 = "1e-15"
+            rm = "347.82608695652175"
+            winding_1_connection = "D"
+            winding_2_connection = "D"
+        }
+        [
+            position = 8824, 7288
+            rotation = left
+            size = 126, 256
+        ]
+
+        component "core/Transmission Line" "Transmission Line2" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "25"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 8464, 6496
+            size = 256, 72
+        ]
+
+        component "core/Transmission Line" "Transmission Line3" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "10"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 9336, 6496
+            size = 256, 72
+        ]
+
+        component "core/Transmission Line" "Transmission Line6" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "10"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 9296, 8072
+            size = 256, 72
+        ]
+
+        component "core/Transmission Line" "Transmission Line7" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "25"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 8424, 8080
+            size = 256, 72
+        ]
+
+        component "core/Transmission Line" "Transmission Line8" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "110"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 10496, 6496
+            size = 256, 72
+        ]
+
+        component "core/Ground" gnd21 {
+        }
+        [
+            position = 10496, 6632
+        ]
+
+        component "core/Transmission Line" "Transmission Line9" {
+            C_metric = "[[Cd, Cnd, Cnd], [Cnd,Cd,Cnd], [Cnd,Cnd,Cd]]"
+            L_metric = "[[Ld, Lnd, Lnd], [Lnd,Ld,Lnd], [Lnd,Lnd,Ld]]"
+            Length_metric = "110"
+            R_metric = "[[Rd, Rnd, Rnd], [Rnd,Rd,Rnd], [Rnd,Rnd,Rd]]"
+            model = "PI"
+            model_def = "RLC"
+            unit_sys = "metric"
+        }
+        [
+            position = 10496, 8072
+            size = 256, 72
+        ]
+
+        component "core/Ground" gnd22 {
+        }
+        [
+            position = 10496, 8248
+        ]
+
+        component "core/Three-phase Meter" "Three-phase at load 8 (mid)" {
+            I_rms = "True"
+            P_meas = "True"
+            P_method = "RMS based"
+            VAB = "True"
+            VBC = "True"
+            VCA = "True"
+            VLn_rms = "True"
+            freq = "True"
+        }
+        [
+            position = 10904, 7320
+            rotation = right
+            size = 56, 240
+        ]
+
+        component "core/Ground" gnd23 {
+        }
+        [
+            position = 10520, 7328
+            rotation = right
+        ]
+
+        component "core/Three-phase Meter" "Three-phase at load 9 (area 2)" {
+            I_rms = "True"
+            P_meas = "True"
+            P_method = "RMS based"
+            VAB = "True"
+            VBC = "True"
+            VCA = "True"
+            VLL_rms = "True"
+            VLn_rms = "True"
+            freq = "True"
+        }
+        [
+            position = 9696, 6496
+            size = 56, 240
+        ]
+
+        component "core/Ground" gnd24 {
+        }
+        [
+            position = 9696, 6704
+        ]
+
+        component "core/Three-phase Meter" "Three-phase at load 7 (area 1)" {
+            I_rms = "True"
+            P_meas = "True"
+            P_method = "RMS based"
+            VAB = "True"
+            VBC = "True"
+            VCA = "True"
+            VLL_rms = "True"
+            VLn_rms = "True"
+            freq = "True"
+        }
+        [
+            position = 9656, 8072
+            size = 56, 240
+        ]
+
+        component "core/Ground" gnd25 {
+        }
+        [
+            position = 9656, 8280
+        ]
+
+        component "core/Parallel RLC Branch" "Parallel RLC Branch1" {
+            capacitance = "C_fil2"
+            inductance = "L_fil2"
+            resistance = "0.34"
+        }
+        [
+            position = 10096, 6744
+            rotation = right
+            size = 128, 256
+        ]
+
+        component "core/Ground" gnd26 {
+        }
+        [
+            position = 10096, 6928
+        ]
+
+        component "core/Parallel RLC Branch" "Parallel RLC Branch2" {
+            capacitance = "C_fil1"
+            inductance = "L_fil1"
+            resistance = "0.19"
+        }
+        [
+            position = 10104, 8328
+            rotation = right
+            size = 128, 256
+        ]
+
+        component "core/Ground" gnd27 {
+        }
+        [
+            position = 10096, 8504
+        ]
+
+        component "core/Voltage Measurement" Vabat10 {
+        }
+        [
+            position = 8672, 6400
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vabat6 {
+        }
+        [
+            position = 8744, 7976
+            size = 64, 32
+        ]
+
+        junction Junction14 pe
+        [
+            position = 7808, 7984
+        ]
+
+        junction Junction16 pe
+        [
+            position = 7808, 8080
+        ]
+
+        junction Junction18 pe
+        [
+            position = 7808, 8176
+        ]
+
+        junction Junction27 pe
+        [
+            position = 7808, 8080
+        ]
+
+        junction Junction28 pe
+        [
+            position = 7808, 7984
+        ]
+
+        junction Junction35 pe
+        [
+            position = 8728, 8064
+        ]
+
+        junction Junction36 pe
+        [
+            position = 8824, 8080
+        ]
+
+        junction Junction37 pe
+        [
+            position = 8920, 8096
+        ]
+
+        junction Junction39 pe
+        [
+            position = 7808, 6400
+        ]
+
+        junction Junction40 pe
+        [
+            position = 7808, 6496
+        ]
+
+        junction Junction41 pe
+        [
+            position = 7808, 6592
+        ]
+
+        junction Junction42 pe
+        [
+            position = 7808, 6496
+        ]
+
+        junction Junction43 pe
+        [
+            position = 7808, 6400
+        ]
+
+        junction Junction58 pe
+        [
+            position = 8824, 6496
+        ]
+
+        junction Junction59 pe
+        [
+            position = 8920, 6512
+        ]
+
+        junction Junction60 pe
+        [
+            position = 8728, 6480
+        ]
+
+        junction Junction61 pe
+        [
+            position = 10000, 6480
+        ]
+
+        junction Junction62 pe
+        [
+            position = 10192, 6512
+        ]
+
+        junction Junction63 pe
+        [
+            position = 10096, 6496
+        ]
+
+        junction Junction64 pe
+        [
+            position = 10096, 6848
+        ]
+
+        junction Junction65 pe
+        [
+            position = 10096, 6848
+        ]
+
+        junction Junction66 pe
+        [
+            position = 10096, 8424
+        ]
+
+        junction Junction67 pe
+        [
+            position = 10096, 8424
+        ]
+
+        junction Junction68 pe
+        [
+            position = 10000, 8056
+        ]
+
+        junction Junction69 pe
+        [
+            position = 10096, 8072
+        ]
+
+        junction Junction70 pe
+        [
+            position = 10192, 8088
+        ]
+
+        junction Junction71 pe
+        [
+            position = 8640, 6480
+        ]
+
+        junction Junction72 pe
+        [
+            position = 8712, 6496
+        ]
+
+        junction Junction73 pe
+        [
+            position = 8704, 8064
+        ]
+
+        junction Junction74 pe
+        [
+            position = 8760, 8080
+        ]
+
+        connect gnd1.node G1.n_node as Connection345
+        [
+            breakpoints = 7472, 8120; 7472, 8120; 7472, 8104
+        ]
+        connect G1.a_node Ia1.p_node as Connection367
+        connect Ia1.n_node Junction14 as Connection369
+        connect Vab1.p_node Junction14 as Connection371
+        connect Ib1.p_node G1.b_node as Connection376
+        connect Junction16 Ib1.n_node as Connection378
+        connect Vbc1.p_node Junction16 as Connection379
+        connect G1.c_node Ic1.p_node as Connection383
+        connect Junction18 Ic1.n_node as Connection394
+        [
+            breakpoints = 7808, 8176; 7808, 8176
+        ]
+        connect Vca1.p_node Junction18 as Connection395
+        connect Junction18 Vbc1.n_node as Connection455
+        [
+            breakpoints = 7808, 8176; 7808, 8176
+        ]
+        connect Tr1.prm_3 Vbc1.n_node as Connection461
+        connect Junction16 Junction27 as Connection469
+        connect Junction27 Vab1.n_node as Connection470
+        [
+            breakpoints = 7808, 8080; 7808, 8080
+        ]
+        connect Tr1.prm_2 Junction27 as Connection471
+        connect Junction14 Junction28 as Connection473
+        connect Junction28 Vca1.n_node as Connection474
+        [
+            breakpoints = 7808, 7984; 7816, 7984; 7808, 7984; 7800, 7984; 7848, 7984; 7856, 7984
+        ]
+        connect Tr1.prm_1 Junction28 as Connection475
+        connect Tr2.prm_1 G2.a_node as Connection507
+        connect Tr2.prm_2 G2.b_node as Connection508
+        connect Tr2.prm_3 G2.c_node as Connection509
+        connect G2.n_node gnd4.node as Connection563
+        connect Junction35 Tr2.sec_1 as Connection663
+        connect Tr2.sec_2 Junction36 as Connection665
+        [
+            breakpoints = 8824, 8776
+        ]
+        connect Tr2.sec_3 Junction37 as Connection668
+        [
+            breakpoints = 8920, 8176; 8920, 8176
+        ]
+        connect gnd9.node G3.n_node as Connection676
+        [
+            breakpoints = 7472, 6536; 7472, 6536; 7472, 6520
+        ]
+        connect G3.a_node Ia3.p_node as Connection677
+        connect Ia3.n_node Junction39 as Connection678
+        connect Vab3.p_node Junction39 as Connection679
+        connect Ib3.p_node G3.b_node as Connection680
+        connect Junction40 Ib3.n_node as Connection681
+        connect Vbc3.p_node Junction40 as Connection682
+        connect G3.c_node Ic3.p_node as Connection683
+        connect Junction41 Ic3.n_node as Connection684
+        [
+            breakpoints = 7808, 6592; 7808, 6592
+        ]
+        connect Vca3.p_node Junction41 as Connection685
+        connect Junction41 Vbc3.n_node as Connection686
+        [
+            breakpoints = 7808, 6592; 7808, 6592
+        ]
+        connect Tr3.prm_3 Vbc3.n_node as Connection687
+        connect Junction40 Junction42 as Connection688
+        connect Junction42 Vab3.n_node as Connection689
+        [
+            breakpoints = 7808, 6496; 7808, 6496
+        ]
+        connect Tr3.prm_2 Junction42 as Connection690
+        connect Junction39 Junction43 as Connection691
+        connect Junction43 Vca3.n_node as Connection692
+        [
+            breakpoints = 7808, 6400; 7816, 6400; 7808, 6400; 7800, 6400; 7848, 6400; 7856, 6400
+        ]
+        connect Tr3.prm_1 Junction43 as Connection693
+        connect G4.n_node gnd12.node as Connection704
+        connect G4.a_node Tr5.prm_1 as Connection838
+        connect G4.b_node Tr5.prm_2 as Connection839
+        connect G4.c_node Tr5.prm_3 as Connection840
+        connect Junction58 Tr5.sec_2 as Connection867
+        [
+            breakpoints = 8824, 6496; 8824, 6496; 8824, 6496; 8824, 6496; 8824, 6496; 8824, 6496; 8824, 6496; 8816, 6496
+        ]
+        connect "Transmission Line2.a_in" Tr3.sec_1 as Connection872
+        connect Tr3.sec_2 "Transmission Line2.b_in" as Connection873
+        connect "Transmission Line2.c_in" Tr3.sec_3 as Connection874
+        connect gnd18.node "Transmission Line2.gnd" as Connection875
+        connect Junction58 "Transmission Line3.b_in" as Connection897
+        [
+            breakpoints = 8824, 6496; 9144, 6496
+        ]
+        connect Tr5.sec_3 Junction59 as Connection898
+        connect Junction59 "Transmission Line2.c_out" as Connection899
+        [
+            breakpoints = 8912, 6512; 8920, 6512; 8920, 6512; 8920, 6512; 8920, 6512; 8912, 6512
+        ]
+        connect "Transmission Line3.c_in" Junction59 as Connection900
+        [
+            breakpoints = 9176, 6512; 8920, 6512
+        ]
+        connect gnd17.node "Transmission Line3.gnd" as Connection901
+        connect Tr5.sec_1 Junction60 as Connection928
+        connect "Transmission Line3.a_in" Junction60 as Connection930
+        connect "Transmission Line6.b_in" Junction36 as Connection974
+        [
+            breakpoints = 9128, 8080
+        ]
+        connect Junction37 "Transmission Line6.c_in" as Connection979
+        [
+            breakpoints = 8920, 8096; 9144, 8096
+        ]
+        connect Junction35 "Transmission Line6.a_in" as Connection976
+        [
+            breakpoints = 8728, 8064; 9104, 8064
+        ]
+        connect gnd20.node "Transmission Line6.gnd" as Connection980
+        connect "Transmission Line7.b_in" Tr1.sec_2 as Connection1001
+        [
+            breakpoints = 8208, 8080
+        ]
+        connect "Transmission Line7.c_in" Tr1.sec_3 as Connection1003
+        [
+            breakpoints = 8224, 8096; 8192, 8096; 8192, 8176
+        ]
+        connect "Transmission Line7.a_in" Tr1.sec_1 as Connection1000
+        [
+            breakpoints = 8192, 8064
+        ]
+        connect Junction37 "Transmission Line7.c_out" as Connection1002
+        [
+            breakpoints = 8920, 8096; 8920, 8096; 8920, 8096; 8920, 8096; 8584, 8096
+        ]
+        connect gnd19.node "Transmission Line7.gnd" as Connection1005
+        connect gnd21.node "Transmission Line8.gnd" as Connection1059
+        connect gnd22.node "Transmission Line9.gnd" as Connection1084
+        connect "Three-phase at load 8 (mid).A+" "Transmission Line8.a_out" as Connection1085
+        connect "Transmission Line8.b_out" "Three-phase at load 8 (mid).B+" as Connection1086
+        connect "Transmission Line8.c_out" "Three-phase at load 8 (mid).C+" as Connection1087
+        connect "Three-phase at load 8 (mid).C-" "Transmission Line9.c_out" as Connection1089
+        connect "Three-phase at load 8 (mid).B-" "Transmission Line9.b_out" as Connection1090
+        connect "Three-phase at load 8 (mid).A-" "Transmission Line9.a_out" as Connection1091
+        connect "Transmission Line3.a_out" "Three-phase at load 9 (area 2).A+" as Connection1092
+        connect "Three-phase at load 9 (area 2).B+" "Transmission Line3.b_out" as Connection1093
+        connect "Transmission Line3.c_out" "Three-phase at load 9 (area 2).C+" as Connection1094
+        connect "Three-phase at load 9 (area 2).GND" gnd24.node as Connection1098
+        [
+            breakpoints = 9696, 6736
+        ]
+        connect "Three-phase at load 7 (area 1).GND" gnd25.node as Connection1099
+        [
+            breakpoints = 9656, 8312
+        ]
+        connect "Transmission Line6.a_out" "Three-phase at load 7 (area 1).A+" as Connection1100
+        connect "Three-phase at load 7 (area 1).B+" "Transmission Line6.b_out" as Connection1101
+        connect "Transmission Line6.c_out" "Three-phase at load 7 (area 1).C+" as Connection1102
+        connect "Three-phase at load 9 (area 2).A-" Junction61 as Connection1106
+        [
+            breakpoints = 9744, 6400; 9744, 6480
+        ]
+        connect Junction61 "Transmission Line8.a_in" as Connection1107
+        connect "Parallel RLC Branch1.P3_pos" Junction61 as Connection1108
+        connect "Three-phase at load 9 (area 2).C-" Junction62 as Connection1109
+        [
+            breakpoints = 9752, 6592; 9752, 6512
+        ]
+        connect Junction62 "Transmission Line8.c_in" as Connection1110
+        connect "Parallel RLC Branch1.P1_pos" Junction62 as Connection1111
+        connect "Three-phase at load 9 (area 2).B-" Junction63 as Connection1112
+        connect Junction63 "Transmission Line8.b_in" as Connection1113
+        connect "Parallel RLC Branch1.P2_pos" Junction63 as Connection1114
+        connect gnd26.node Junction64 as Connection1116
+        connect Junction64 "Parallel RLC Branch1.P2_neg" as Connection1117
+        connect "Parallel RLC Branch1.P1_neg" Junction65 as Connection1119
+        connect Junction65 Junction64 as Connection1120
+        connect "Parallel RLC Branch1.P3_neg" Junction65 as Connection1121
+        connect gnd27.node Junction66 as Connection1122
+        connect Junction66 "Parallel RLC Branch2.P2_neg" as Connection1123
+        connect "Parallel RLC Branch2.P1_neg" Junction67 as Connection1124
+        connect Junction67 Junction66 as Connection1125
+        connect "Parallel RLC Branch2.P3_neg" Junction67 as Connection1126
+        connect "Transmission Line9.a_in" Junction68 as Connection1127
+        connect Junction68 "Three-phase at load 7 (area 1).A-" as Connection1128
+        connect "Parallel RLC Branch2.P3_pos" Junction68 as Connection1129
+        connect "Three-phase at load 7 (area 1).B-" Junction69 as Connection1130
+        connect Junction69 "Transmission Line9.b_in" as Connection1131
+        connect "Parallel RLC Branch2.P2_pos" Junction69 as Connection1132
+        connect "Three-phase at load 7 (area 1).C-" Junction70 as Connection1133
+        [
+            breakpoints = 9704, 8168; 9704, 8088
+        ]
+        connect Junction70 "Transmission Line9.c_in" as Connection1134
+        connect "Parallel RLC Branch2.P1_pos" Junction70 as Connection1135
+        connect Junction60 Junction71 as Connection1136
+        [
+            breakpoints = 8728, 6480
+        ]
+        connect Junction71 "Transmission Line2.a_out" as Connection1137
+        connect Vabat10.p_node Junction71 as Connection1138
+        connect "Transmission Line2.b_out" Junction72 as Connection1139
+        connect Junction72 Junction58 as Connection1140
+        connect Vabat10.n_node Junction72 as Connection1141
+        connect "Transmission Line7.a_out" Junction73 as Connection1142
+        [
+            breakpoints = 8632, 8064
+        ]
+        connect Junction73 Junction35 as Connection1143
+        connect Vabat6.p_node Junction73 as Connection1144
+        connect Junction36 Junction74 as Connection1145
+        [
+            breakpoints = 8824, 8080; 8824, 8080; 8824, 8080; 8824, 8080; 8824, 8080; 8824, 8080; 8824, 8080
+        ]
+        connect Junction74 "Transmission Line7.b_out" as Connection1146
+        [
+            breakpoints = 8608, 8080
+        ]
+        connect Vabat6.n_node Junction74 as Connection1147
+        connect "Three-phase at load 8 (mid).GND" gnd23.node as Connection1148
+    }
+
+    default {
+        "core/Current Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+
+        "core/Parallel RLC Branch" {
+            num_phases = "Three-Phase"
+            branch_type = "RLC"
+            resistance = "10"
+            inductance = "10e-3"
+            initial_current = "0"
+            capacitance = "10e-6"
+            initial_voltage = "0"
+        }
+
+        "core/Three Phase Two Winding Transformer" {
+            input = "SC and OC tests"
+            Sn = "160000.0"
+            f = "50.0"
+            V1 = "10000.0"
+            V2 = "400.0"
+            usc1 = "4.0"
+            Psc1 = "2350.0"
+            R1 = "4.58984375"
+            L1 = ".0370093710364"
+            R2 = ".00734375"
+            L2 = "5.92149936583e-05"
+            r1 = ".00734375"
+            l1 = ".0186029389059"
+            r2 = ".00734375"
+            l2 = ".0186029389059"
+            core_model = "Linear"
+            ioc1 = "0.7"
+            Poc1 = "460.0"
+            Rm = "217391.304348"
+            Lm = "311.709196788"
+            flux_vals_SI = "[0, 1910.3, 2419.7]"
+            current_vals_SI = "[0, 0.66653, 277.72]"
+            rm = "347.826086957"
+            lm = "156.68213163"
+            flux_vals_pu = "[0, 1.2, 1.52]"
+            current_vals_pu = "[0, 0.0024, 1]"
+            flux_vals_SCOC = "[0, 1.2, 1.52]"
+            current_vals_SCOC = "[0, 0.0024, 1]"
+            upper_flux_vals_pu = "[0.2, 1.2, 1.52]"
+            upper_flux_vals_SI = "[318.33, 1910.3, 2419.7]"
+            upper_flux_vals_SCOC = "[0.2, 1.2, 1.52]"
+            hysteresis_number = "1"
+            execution_rate = "100e-6"
+            import_from_SI2SCOC = "Import from SI"
+            import_from_pu2SCOC = "Import from PU"
+            import_from_SCOC2SI = "Import from SC OC"
+            import_from_pu2SI = "Import from PU"
+            import_from_SCOC2pu = "Import from SC OC"
+            import_from_SI2pu = "Import from SI"
+            preview_flux_current = "Preview SI"
+            winding_1_connection = "Y"
+            winding_2_connection = "Y"
+            clock_number = "0"
+            embedded_cpl = "None"
+            coupling_type = "core"
+            ratio_type = "Automatic"
+            ratio = "0.1"
+            Rshunt = "inf"
+        }
+
+        "core/Three Phase Voltage Source" {
+            init_rms_value = "0.0"
+            init_frequency = "50.0"
+            init_phase = "0.0"
+        }
+
+        "core/Three-phase Meter" {
+            R = "1e5"
+            n_cycles = "1"
+            Ts = "100e-6"
+            enable_probes = "True"
+            enable_out = "True"
+            remove_snubber = "False"
+            enable_bandwidth = "False"
+            bandwidth = "10e3"
+            VAn = "True"
+            VBn = "True"
+            VCn = "True"
+            VAB = "False"
+            VBC = "False"
+            VCA = "False"
+            VN = "False"
+            IA = "True"
+            IB = "True"
+            IC = "True"
+            IN = "False"
+            freq = "False"
+            VLn_rms = "False"
+            VLL_rms = "False"
+            VLn_avg_rms = "False"
+            VLL_avg_rms = "False"
+            VN_rms = "False"
+            I_rms = "False"
+            I_avg_rms = "False"
+            IN_rms = "False"
+            P_method = "alpha-beta"
+            enable_extra_out = "False"
+            P_meas = "False"
+        }
+
+        "core/Transmission Line" {
+            model = "RL coupled"
+            num_of_phases = "3"
+            model_def = "Geometry"
+            unit_sys = "imperial"
+            unit_sys_edited_flag = "0"
+            Length_metric = "100.0"
+            Length_miles = "62.1371"
+            Frequency = "60.0"
+            Earth_resistivity = "100"
+            X_axis_1_metric = "-1.0668"
+            Y_axis_1_metric = "8.5344"
+            GMR_1_metric = "0.00743712"
+            RD_1_metric = "0.009156192"
+            Rs_1_metric = "0.19013958482462417"
+            X_axis_1_imperial = "-3.5"
+            Y_axis_1_imperial = "28.0"
+            GMR_1_imperial = "0.0244"
+            RD_1_imperial = "0.03004"
+            Rs_1_imperial = "0.306"
+            X_axis_2_metric = "-0.3048"
+            Y_axis_2_metric = "8.5344"
+            GMR_2_metric = "0.00743712"
+            RD_2_metric = "0.009156192"
+            Rs_2_metric = "0.19013958482462417"
+            X_axis_2_imperial = "-1.0"
+            Y_axis_2_imperial = "28.0"
+            GMR_2_imperial = "0.0244"
+            RD_2_imperial = "0.03004"
+            Rs_2_imperial = "0.306"
+            X_axis_3_metric = "1.0668"
+            Y_axis_3_metric = "8.5344"
+            GMR_3_metric = "0.00743712"
+            RD_3_metric = "0.009156192"
+            Rs_3_metric = "0.19013958482462417"
+            X_axis_3_imperial = "3.5"
+            Y_axis_3_imperial = "28.0"
+            GMR_3_imperial = "0.0244"
+            RD_3_imperial = "0.03004"
+            Rs_3_imperial = "0.306"
+            X_axis_4_metric = "0.1524"
+            Y_axis_4_metric = "7.3152"
+            GMR_4_metric = "0.00248"
+            RD_4_metric = "0.00714"
+            Rs_4_metric = "0.3678"
+            X_axis_4_imperial = "0.5"
+            Y_axis_4_imperial = "24.0"
+            GMR_4_imperial = "0.00814"
+            RD_4_imperial = "0.02345"
+            Rs_4_imperial = "0.592"
+            R_metric = "[[0.2481, 0.0579, 0.0579], [0.0579, 0.2481, 0.0579], [0.0579, 0.0579, 0.2481]]"
+            R_imperial = "[[0.4, 0.093, 0.093], [0.093, 0.4, 0.093], [0.093, 0.093, 0.4]]"
+            L_metric = "[[0.00233, 0.00140, 0.00140], [0.00140, 0.00233, 0.00140], [0.00140, 0.00140, 0.00233]]"
+            L_imperial = "[[0.00374, 0.0022, 0.0022], [0.0022, 0.00374, 0.0022], [0.0022, 0.0022, 0.00374]]"
+            C_metric = "[[8.546e-9, 0, 0], [0, 8.546e-9, 0], [0, 0, 8.546e-9]]"
+            C_imperial = "[[1.471e-8, 0, 0], [0, 1.530e-8, 0], [0, 0, 1.375e-8]]"
+            R_sequence_metric = "[[0.3864, 0, 0],[0, 0.01273, 0], [0, 0, 0.01273]]"
+            L_sequence_metric = "[[4.1264e-3, 0, 0],[0, 0.9337e-3, 0], [0, 0, 0.9337e-3]]"
+            C_sequence_metric = "[[7.751e-9, 0, 0],[0, 12.74e-9, 0], [0, 0, 12.74e-9]]"
+            R_sequence_imperial = "[[0.6218, 0, 0],[0, 0.0204, 0], [0, 0, 0.0204]]"
+            L_sequence_imperial = "[[0.00664, 0, 0],[0, 0.00150, 0], [0, 0, 0.00150]]"
+            C_sequence_imperial = "[[1.247e-8, 0, 0],[0, 2.0503e-8, 0], [0, 0, 2.0503e-8]]"
+            import_from_geometry = "Import from Geometry"
+            import_from_RLC = "Import from RLC"
+        }
+
+        "core/Voltage Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        
+        # Node components parametrization
+        Rd=0.5719
+        Rnd=0.5190
+        Ld=2.969e-3
+        Lnd=1.56567e-3
+        Cd=7.5995e-9
+        Cnd=0
+        
+        L_fil2=4.4e-3
+        C_fil2=4.4e-6
+        L_fil1=2.2e-3
+        C_fil1=2.2e-6
+    ENDCODE
+}
